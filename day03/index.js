@@ -24,6 +24,7 @@ function isDo(index) {
     let closestDo = dos.reverse().find((x) => x < index);
     if (closestDo == undefined) closestDo = 0;
     let closestDont = donts.reverse().find((x) => x < index);
+    console.log(index, closestDo, closestDont);
     return closestDo > closestDont ? true : false;
 }
 
@@ -33,12 +34,13 @@ let temp = [];
 
 const test = regex.exec(input);
 
-console.log("t", test);
+//console.log("t", test);
 const multiply = test.input.match(regex).map((line, index) => {
     temp = line.split(",");
     temp[0] = Number(temp[0].slice(4));
     temp[1] = Number(temp[1].slice(0, -1));
     // console.log(temp);
+
     return isDo(index) ? temp[0] * temp[1] : 0;
 });
 
